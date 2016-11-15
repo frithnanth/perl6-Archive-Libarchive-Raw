@@ -1,0 +1,17 @@
+{
+  "authors" : [
+    "Fernando Santagata"
+  ],
+  "build-depends" : [ ],
+  "depends" : [ "NativeCall" ],
+  "description" : "Raw interface to libarchive",
+  "name" : "Archive::Libarchive::Raw",
+  "perl" : "6.*",
+  "provides" : {
+    "Compress::lzma::Raw" : "lib/Archive/Libarchive/Raw.pm6"
+  },
+  "resources" : [ ],
+  "source-url" : "https://github.com/frithnanth/perl6-Archive-Libarchive-Raw",
+  "test-depends" : [ ],
+  "version" : "*"
+}
