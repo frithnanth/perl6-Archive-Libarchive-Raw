@@ -3,7 +3,7 @@ unit class Archive::Libarchive::Raw:ver<0.0.1>;
 
 use NativeCall;
 
-constant LIB = %*ENV<PERL6_LIBARCHIVE_LIB> || 'libarchive.so.13';
+constant LIB = %*ENV<PERL6_LIBARCHIVE_LIB> || 'libarchive.so';
 
 constant ARCHIVE_EOF                                      is export = 1;
 constant ARCHIVE_OK                                       is export = 0;
