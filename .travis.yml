@@ -1,13 +1,21 @@
+sudo: required
+
 os:
   - linux
-  - osx
+
 language: perl6
+
 perl6:
   - latest
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libarchive13
+
 install:
   - rakudobrew build-panda
   - panda --notests installdeps .
+
 script:
   - perl6 -MPanda::Builder -e 'Panda::Builder.build(~$*CWD)'
   - PERL6LIB=$PWD/lib prove -e perl6 -vr t/
-sudo: false
