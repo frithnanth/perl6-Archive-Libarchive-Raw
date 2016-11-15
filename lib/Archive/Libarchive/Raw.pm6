@@ -370,14 +370,14 @@ chooses uses the same API).
 
 =head1 Installation
 
-To install it using Panda (a module management tool bundled with Rakudo Star):
+To install it using Panda (a module management tool):
 
 =begin code
 $ panda update
 $ panda install Archive::Libarchive::Raw
 =end code
 
-To install it using zef (a module management tool bundled with Rakudo Star):
+To install it using zef (a module management tool):
 
 =begin code
 $ zef update
