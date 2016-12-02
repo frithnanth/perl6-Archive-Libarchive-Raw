@@ -361,7 +361,7 @@ instructions below based on your platform:
 =head2 Debian Linux
 
 =begin code
-sudo apt-get install libarchive1
+sudo apt-get install libarchive13
 =end code
 
 The module looks for a library called libnotify.so.4, or whatever it finds in
