@@ -54,10 +54,10 @@ instructions below based on your platform:
 ### Debian Linux
 
 ```
-sudo apt-get install libarchive1
+sudo apt-get install libarchive13
 ```
 
-The module looks for a library called libnotify.so.4, or whatever it finds in
+The module looks for a library called libarchive.so, or whatever it finds in
 the environment variable `PERL6_LIBARCHIVE_LIB` (provided that the library one
 chooses uses the same API).
 

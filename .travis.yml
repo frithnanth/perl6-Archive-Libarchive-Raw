@@ -10,15 +10,14 @@ language: perl6
 perl6:
   - latest
 
-#before_install:
-#  - sudo apt-get update
-#  - sudo apt-get install libarchive13
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install libarchive12
 
 install:
   - rakudobrew build-panda
   - panda --notests installdeps .
 
 script:
-  - apt-cache search libarchive
   - perl6 -MPanda::Builder -e 'Panda::Builder.build(~$*CWD)'
   - PERL6LIB=$PWD/lib prove -e perl6 -vr t/
