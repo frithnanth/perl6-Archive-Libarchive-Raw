@@ -364,7 +364,7 @@ instructions below based on your platform:
 sudo apt-get install libarchive13
 =end code
 
-The module looks for a library called libnotify.so.4, or whatever it finds in
+The module looks for a library called libarchive.so, or whatever it finds in
 the environment variable B<PERL6_LIBARCHIVE_LIB> (provided that the library one
 chooses uses the same API).
 
