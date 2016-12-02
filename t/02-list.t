@@ -9,7 +9,8 @@ ok {defined $a}, 'initialization';
 # from file
 is archive_read_support_filter_all($a), ARCHIVE_OK, 'use any compression filter';
 is archive_read_support_format_all($a), ARCHIVE_OK, 'use any file format';
-my $file = "t/testdata.tar.gz";
+my $path = $*PROGRAM-NAME.subst(/ <-[/]>+$/, '');
+my $file = $path ~ "testdata.tar.gz";
 is archive_read_open_filename($a, $file, 10240), ARCHIVE_OK, 'read from file';
 my archive_entry $entry .= new;
 ok {defined $entry}, 'create entry object';
