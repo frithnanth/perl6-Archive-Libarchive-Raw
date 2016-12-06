@@ -7,10 +7,10 @@ constant LIB = %*ENV<PERL6_LIBARCHIVE_LIB> || 'libarchive.so';
 
 constant ARCHIVE_EOF                                      is export = 1;
 constant ARCHIVE_OK                                       is export = 0;
-constant ARCHIVE_RETRY                                    is export = -10;
-constant ARCHIVE_WARN                                     is export = -20;
-constant ARCHIVE_FAILED                                   is export = -25;
-constant ARCHIVE_FATAL                                    is export = -30;
+constant ARCHIVE_RETRY                                    is export = 0xFFFFFFF6;
+constant ARCHIVE_WARN                                     is export = 0xFFFFFFEC;
+constant ARCHIVE_FAILED                                   is export = 0xFFFFFFE7;
+constant ARCHIVE_FATAL                                    is export = 0xFFFFFFE2;
 constant ARCHIVE_FILTER_NONE                              is export = 0;
 constant ARCHIVE_FILTER_GZIP                              is export = 1;
 constant ARCHIVE_FILTER_BZIP2                             is export = 2;
@@ -70,8 +70,8 @@ constant ARCHIVE_FORMAT_WARC                              is export = 0xF0000;
 constant ARCHIVE_READ_FORMAT_CAPS_NONE                    is export = 0;
 constant ARCHIVE_READ_FORMAT_CAPS_ENCRYPT_DATA            is export = 1;
 constant ARCHIVE_READ_FORMAT_CAPS_ENCRYPT_METADATA        is export = 2;
-constant ARCHIVE_READ_FORMAT_ENCRYPTION_UNSUPPORTED       is export = -2;
-constant ARCHIVE_READ_FORMAT_ENCRYPTION_DONT_KNOW         is export = -1;
+constant ARCHIVE_READ_FORMAT_ENCRYPTION_UNSUPPORTED       is export = 0xFFFFFFFFE;
+constant ARCHIVE_READ_FORMAT_ENCRYPTION_DONT_KNOW         is export = 0xFFFFFFFFF;
 constant ARCHIVE_EXTRACT_OWNER                            is export = 0x0001;
 constant ARCHIVE_EXTRACT_PERM                             is export = 0x0002;
 constant ARCHIVE_EXTRACT_TIME                             is export = 0x0004;
@@ -111,7 +111,11 @@ sub archive_bzlib_version(--> Str) is native(LIB) is export { * }
 sub archive_liblz4_version(--> Str) is native(LIB) is export { * }
 
 sub archive_read_new(--> archive) is native(LIB) is export { * }
+sub archive_file_count(archive $archive --> int64) is native(LIB) is export { * }
+
 sub archive_error_string(archive $archive --> Str) is native(LIB) is export { * }
+sub archive_errno(archive $archive --> int64) is native(LIB) is export { * }
+sub archive_clear_error(archive $archive) is native(LIB) is export { * }
 
 sub archive_read_support_compression_all(archive $archive --> int64) is native(LIB) is export { * }
 sub archive_read_support_compression_bzip2(archive $archive --> int64) is native(LIB) is export { * }
@@ -168,7 +172,10 @@ sub archive_read_support_format_xar(archive $archive --> int64) is native(LIB) i
 sub archive_read_support_format_zip(archive $archive --> int64) is native(LIB) is export { * }
 sub archive_read_support_format_zip_streamable(archive $archive --> int64) is native(LIB) is export { * }
 sub archive_read_support_format_zip_seekable(archive $archive --> int64) is native(LIB) is export { * }
+
 sub archive_read_set_format(archive $archive, int64 $format --> int64) is native(LIB) is export { * }
+sub archive_format_name(archive $archive --> Str) is native(LIB) is export { * }
+sub archive_format(archive $archive --> int64) is native(LIB) is export { * }
 
 sub archive_read_open_filename(archive $archive, Str $filename, size_t $block-size --> int64) is native(LIB) is export { * }
 sub archive_read_open_memory(archive $archive, Buf $data, size_t $size --> int64) is native(LIB) is export { * }
