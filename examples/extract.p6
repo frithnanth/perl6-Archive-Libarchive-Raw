@@ -30,7 +30,7 @@ sub extract($file)
 {
   my archive $a = archive_read_new;
   archive_read_support_format_all $a;
-  archive_read_support_compression_all $a;
+  archive_read_support_filter_all $a;
   archive_read_open_filename($a, $file, 10240) == ARCHIVE_OK or die 'Unable to open archive';
 
   my archive $ext = archive_write_disk_new;

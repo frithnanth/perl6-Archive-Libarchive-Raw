@@ -116,20 +116,6 @@ sub archive_error_string(archive $archive --> Str) is native(LIB) is export { * 
 sub archive_errno(archive $archive --> int64) is native(LIB) is export { * }
 sub archive_clear_error(archive $archive) is native(LIB) is export { * }
 
-sub archive_read_support_compression_all(archive $archive --> int64) is native(LIB) is export { * }
-sub archive_read_support_compression_bzip2(archive $archive --> int64) is native(LIB) is export { * }
-sub archive_read_support_compression_compress(archive $archive --> int64) is native(LIB) is export { * }
-sub archive_read_support_compression_gzip(archive $archive --> int64) is native(LIB) is export { * }
-sub archive_read_support_compression_lzip(archive $archive --> int64) is native(LIB) is export { * }
-sub archive_read_support_compression_lzma(archive $archive --> int64) is native(LIB) is export { * }
-sub archive_read_support_compression_none(archive $archive --> int64) is native(LIB) is export { * }
-sub archive_read_support_compression_program(archive $archive, Str $command --> int64) is native(LIB) is export { * }
-sub archive_read_support_compression_program_signature(archive $archive, Str $cmd, Buf $match, size_t $length --> int64)
-  is native(LIB) is export { * }
-sub archive_read_support_compression_rpm(archive $archive --> int64) is native(LIB) is export { * }
-sub archive_read_support_compression_uu(archive $archive --> int64) is native(LIB) is export { * }
-sub archive_read_support_compression_xz(archive $archive --> int64) is native(LIB) is export { * }
-
 sub archive_read_support_filter_all(archive $archive --> int64) is native(LIB) is export { * }
 sub archive_read_support_filter_bzip2(archive $archive --> int64) is native(LIB) is export { * }
 sub archive_read_support_filter_compress(archive $archive --> int64) is native(LIB) is export { * }
