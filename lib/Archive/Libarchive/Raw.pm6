@@ -5,8 +5,8 @@ use NativeCall;
 
 constant LIB = %*ENV<PERL6_LIBARCHIVE_LIB> || 'libarchive.so';
 
-constant ARCHIVE_EOF                                      is export = 1;
 constant ARCHIVE_OK                                       is export = 0;
+constant ARCHIVE_EOF                                      is export = 1;
 constant ARCHIVE_RETRY                                    is export = 0xFFFFFFF6;
 constant ARCHIVE_WARN                                     is export = 0xFFFFFFEC;
 constant ARCHIVE_FAILED                                   is export = 0xFFFFFFE7;
@@ -111,7 +111,6 @@ sub archive_bzlib_version(--> Str) is native(LIB) is export { * }
 sub archive_liblz4_version(--> Str) is native(LIB) is export { * }
 
 sub archive_read_new(--> archive) is native(LIB) is export { * }
-sub archive_file_count(archive $archive --> int64) is native(LIB) is export { * }
 
 sub archive_error_string(archive $archive --> Str) is native(LIB) is export { * }
 sub archive_errno(archive $archive --> int64) is native(LIB) is export { * }
@@ -172,7 +171,6 @@ sub archive_read_support_format_xar(archive $archive --> int64) is native(LIB) i
 sub archive_read_support_format_zip(archive $archive --> int64) is native(LIB) is export { * }
 sub archive_read_support_format_zip_streamable(archive $archive --> int64) is native(LIB) is export { * }
 sub archive_read_support_format_zip_seekable(archive $archive --> int64) is native(LIB) is export { * }
-
 sub archive_read_set_format(archive $archive, int64 $format --> int64) is native(LIB) is export { * }
 sub archive_format_name(archive $archive --> Str) is native(LIB) is export { * }
 sub archive_format(archive $archive --> int64) is native(LIB) is export { * }
@@ -181,6 +179,7 @@ sub archive_read_open_filename(archive $archive, Str $filename, size_t $block-si
 sub archive_read_open_memory(archive $archive, Buf $data, size_t $size --> int64) is native(LIB) is export { * }
 sub archive_read_next_header(archive $archive, archive_entry $entry is rw --> int64) is native(LIB) is export { * }
 sub archive_read_data_skip(archive $archive --> int64) is native(LIB) is export { * }
+sub archive_file_count(archive $archive --> int64) is native(LIB) is export { * }
 sub archive_read_finish(archive $archive --> int64) is native(LIB) is export { * }
 sub archive_read_free(archive $archive --> int64) is native(LIB) is export { * }
 sub archive_read_close(archive $archive --> int64) is native(LIB) is export { * }
@@ -251,9 +250,9 @@ sub archive_write_zip_set_compression_deflate(archive $archive --> int64) is nat
 sub archive_write_zip_set_compression_store(archive $archive --> int64) is native(LIB) is export { * }
 
 sub archive_entry_new(--> archive_entry) is native(LIB) is export { * }
-sub archive_entry_pathname(archive_entry $entry --> Str) is native(LIB) is export { * }
-sub archive_entry_size(archive_entry $entry --> int64) is native(LIB) is export { * }
 
+sub archive_entry_pathname(archive_entry $archive_entry --> Str) is native(LIB) is export { * }
+sub archive_entry_size(archive_entry $archive_entry --> int64) is native(LIB) is export { * }
 sub archive_entry_set_atime(archive_entry $archive_entry, int64, int64) is native(LIB) is export { * }
 sub archive_entry_unset_atime(archive_entry $archive_entry) is native(LIB) is export { * }
 sub archive_entry_set_birthtime(archive_entry $archive_entry, int64, int64) is native(LIB) is export { * }

@@ -15,11 +15,11 @@ sub copy_data(archive $ar, archive $aw --> int64)
     if $res == ARCHIVE_EOF {
       return ARCHIVE_OK;
     }
-    if $res < ARCHIVE_OK {
+    if $res > ARCHIVE_OK {
       return $res;
     }
     $res = archive_write_data_block $aw, $buff, $size, $offset;
-    if $res < ARCHIVE_OK {
+    if $res > ARCHIVE_OK {
       say archive_error_string($aw);
       return $res;
     }
@@ -44,31 +44,31 @@ sub extract($file)
       when ARCHIVE_EOF {
         last;
       }
-      when $_ < ARCHIVE_OK {
+      when $_ > ARCHIVE_OK {
         say archive_error_string($a);
         proceed;
       }
-      when $_ < ARCHIVE_WARN {
+      when $_ > ARCHIVE_WARN {
         die;
       }
     }
     my $res = archive_write_header($ext, $entry);
-    if $res < ARCHIVE_OK {
+    if $res > ARCHIVE_OK {
       say archive_error_string($a);
     } elsif archive_entry_size($entry) > 0 {
       $res = copy_data $a, $ext;
-      if $res < ARCHIVE_OK {
+      if $res > ARCHIVE_OK {
         say archive_error_string($a);
       }
-      if $res < ARCHIVE_WARN {
-        die;
+      if $res > ARCHIVE_WARN {
+        die archive_error_string($a);
       }
     }
     $res = archive_write_finish_entry $ext;
-    if $res < ARCHIVE_OK {
+    if $res > ARCHIVE_OK {
       say archive_error_string($a);
     }
-    if $res < ARCHIVE_WARN {
+    if $res > ARCHIVE_WARN {
       die;
     }
   }
