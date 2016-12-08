@@ -8,7 +8,7 @@ use Archive::Libarchive::Raw;
 my archive $a = archive_read_new;
 ok {defined $a}, 'initialization';
 is archive_read_support_format_all($a), ARCHIVE_OK, 'use any file format';
-is archive_read_support_compression_all($a), ARCHIVE_OK, 'use any compression';
+is archive_read_support_filter_all($a), ARCHIVE_OK, 'use any compression';
 my $path = $*PROGRAM-NAME.subst(/ <-[/]>+$/, '');
 is archive_read_open_filename($a, $path ~ "testdata.tar.gz", 10240), ARCHIVE_OK, 'open archive file';
 my archive $ext = archive_write_disk_new;
@@ -40,7 +40,7 @@ is './datafile1'.IO.slurp, "some data\n", 'file extraction';
 './datafile1'.IO.unlink;
 $a = archive_read_new;
 archive_read_support_format_all($a);
-archive_read_support_compression_all($a);
+archive_read_support_filter_all($a);
 is archive_read_open_filename($a, $path ~ "broken.tar.gz", 10240), ARCHIVE_FATAL, 'open broken file';
 
 done-testing;

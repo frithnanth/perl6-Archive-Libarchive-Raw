@@ -35,7 +35,7 @@ is archive_read_free($a), ARCHIVE_OK, 'free internal data structures';
 # read from memory
 my archive $a2 = archive_read_new();
 my $buffer = slurp $file, :bin;
-is archive_read_support_compression_gzip($a2), ARCHIVE_OK, 'use gzip compression';
+is archive_read_support_filter_gzip($a2), ARCHIVE_OK, 'use gzip compression';
 is archive_read_support_format_tar($a2), ARCHIVE_OK, 'use tar file format';
 is archive_read_open_memory($a2, $buffer, $file.IO.s), ARCHIVE_OK, 'read from memory';
 is archive_read_next_header($a2, $entry), ARCHIVE_OK, 'read header entry from memory';
