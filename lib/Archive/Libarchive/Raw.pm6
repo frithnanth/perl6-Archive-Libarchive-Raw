@@ -184,10 +184,10 @@ sub archive_write_data_block(archive $archive, Pointer[void] $buff, size_t $size
   is native(LIB) is export { * }
 sub archive_write_finish_entry(archive $archive --> int64) is native(LIB) is export { * }
 sub archive_write_fail(archive $archive --> int64) is native(LIB) is export { * }
-sub archive_write_open_fd(archive $archive, int64 $_fd) is native(LIB) is export { * }
-sub archive_write_open_filename(archive $archive, Str $_file) is native(LIB) is export { * }
-sub archive_write_open_filename_w(archive $archive, Str $_file) is native(LIB) is export { * }
-sub archive_write_open_memory(archive $archive, Pointer[void] $_buffer, size_t $_buffSize, size_t $_used is rw)
+sub archive_write_open_fd(archive $archive, int64 $_fd --> int64) is native(LIB) is export { * }
+sub archive_write_open_filename(archive $archive, Str $_file --> int64) is native(LIB) is export { * }
+sub archive_write_open_filename_w(archive $archive, Str $_file --> int64) is native(LIB) is export { * }
+sub archive_write_open_memory(archive $archive, Pointer[void] $_buffer, size_t $_buffSize, size_t $_used is rw --> int64)
   is native(LIB) is export { * }
 
 sub archive_write_add_filter(archive $archive, int64 $filter_code --> int64) is native(LIB) is export { * }
