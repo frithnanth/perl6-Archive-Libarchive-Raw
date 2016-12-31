@@ -8,6 +8,8 @@ sub archiver(@filei, $fileo)
   my archive $a = archive_write_new;
   archive_write_add_filter_gzip($a);
   archive_write_set_format_pax_restricted($a);
+  # or
+  # archive_write_set_format_filter_by_ext $a, $fileo;
   archive_write_open_filename($a, $fileo);
   for @filei -> $file {
     my archive_entry $entry = archive_entry_new;
