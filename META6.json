@@ -8,7 +8,8 @@
   "name" : "Archive::Libarchive::Raw",
   "perl" : "6.*",
   "provides" : {
-    "Archive::Libarchive::Raw" : "lib/Archive/Libarchive/Raw.pm6"
+    "Archive::Libarchive::Raw" : "lib/Archive/Libarchive/Raw.pm6",
+    "Archive::Libarchive::Constants" : "lib/Archive/Libarchive/Constants.pm6"
   },
   "resources" : [ ],
   "source-url" : "https://github.com/frithnanth/perl6-Archive-Libarchive-Raw",

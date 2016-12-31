@@ -14,6 +14,7 @@ Archive::Libarchive::Raw - Raw interface to libarchive using NativeCall.
 use v6;
 
 use Archive::Libarchive::Raw;
+use Archive::Libarchive::Constants;
 
 sub MAIN(:$file! where { .IO.f // die "file '$file' not found" })
 {

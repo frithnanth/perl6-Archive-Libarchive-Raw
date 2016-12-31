@@ -3,6 +3,7 @@
 use Test;
 use lib 'lib';
 
-plan 1;
+plan 2;
 
 use-ok 'Archive::Libarchive::Raw';
+use-ok 'Archive::Libarchive::Constants';

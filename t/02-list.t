@@ -3,6 +3,7 @@
 use Test;
 use lib 'lib';
 use Archive::Libarchive::Raw;
+use Archive::Libarchive::Constants;
 
 my archive $a = archive_read_new();
 ok {defined $a}, 'initialization';

@@ -2,6 +2,7 @@
 
 use lib 'lib';
 use Archive::Libarchive::Raw;
+use Archive::Libarchive::Constants;
 
 sub archiver(@filei, $fileo)
 {

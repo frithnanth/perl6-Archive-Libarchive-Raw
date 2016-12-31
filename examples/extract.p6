@@ -3,6 +3,7 @@
 use NativeCall;
 use lib 'lib';
 use Archive::Libarchive::Raw;
+use Archive::Libarchive::Constants;
 
 sub copy_data(archive $ar, archive $aw --> int64)
 {
