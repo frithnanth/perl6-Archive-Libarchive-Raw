@@ -1,18 +1,14 @@
 {
-  "authors" : [
-    "Fernando Santagata"
-  ],
-  "build-depends" : [ ],
-  "depends" : [ "NativeCall" ],
-  "description" : "Raw interface to libarchive",
+  "perl" : "6.c",
   "name" : "Archive::Libarchive::Raw",
-  "perl" : "6.*",
+  "version" : "0.0.1",
+  "description" : "Raw interface to libarchive",
+  "depends" : [ "NativeCall" ],
+  "test-depends" : [ "Test" ],
   "provides" : {
     "Archive::Libarchive::Raw" : "lib/Archive/Libarchive/Raw.pm6",
     "Archive::Libarchive::Constants" : "lib/Archive/Libarchive/Constants.pm6"
   },
-  "resources" : [ ],
-  "source-url" : "git://github.com/frithnanth/perl6-Archive-Libarchive-Raw",
-  "test-depends" : [ ],
-  "version" : "*"
+  "authors" : [ "Fernando Santagata" ],
+  "source-url" : "git://github.com/frithnanth/perl6-Archive-Libarchive-Raw"
 }
