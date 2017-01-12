@@ -3,7 +3,11 @@ unit module Archive::Libarchive::Raw:ver<0.0.1>;
 
 use NativeCall;
 
-constant LIB = %*ENV<PERL6_LIBARCHIVE_LIB> || 'libarchive.so.13';
+constant LIB = %*ENV<PERL6_LIBARCHIVE_LIB> || (
+    $*DISTRO.is-win
+        ?? %?RESOURCES<libarchive.dll>.abspath
+        !! 'libarchive.so.13'
+);
 
 class archive       is repr('CPointer') is export { * } # libarchive private struct
 class archive_entry is repr('CPointer') is export { * } # libarchive private struct
