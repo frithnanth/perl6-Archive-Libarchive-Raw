@@ -103,6 +103,10 @@ need to use NativeCall. If you wish to use a higher level interface, please take
 
 Fernando Santagata
 
+## Contributions
+
+Many thanks to Jonathan Worthington for the Windows installer code.
+
 ## Copyright and license
 
 The Artistic License 2.0

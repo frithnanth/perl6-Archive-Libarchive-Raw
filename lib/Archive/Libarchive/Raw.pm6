@@ -305,6 +305,10 @@ $ prove6
 
 Fernando Santagata
 
+=head1 Contributions
+
+Many thanks to Jonathan Worthington for the Windows installer code.
+
 =head1 License
 
 The Artistic License 2.0
