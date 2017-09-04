@@ -5,7 +5,7 @@ use NativeCall;
 
 constant LIB = $*DISTRO.is-win
                 ?? %?RESOURCES<libarchive.dll>.absolute
-                !! 'archive';
+                !! ('archive', v13);
 
 class archive       is repr('CPointer') is export { * } # libarchive private struct
 class archive_entry is repr('CPointer') is export { * } # libarchive private struct
