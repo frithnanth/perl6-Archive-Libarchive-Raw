@@ -1,5 +1,5 @@
 use v6;
-use LWP::Simple;
+use HTTP::UserAgent;
 use NativeCall;
 
 class Build {
@@ -23,7 +23,14 @@ class Build {
         my $basedir = $workdir ~ '\resources';
 
         say "Fetching $file";
-        my $blob = LWP::Simple.get("http://www.p6c.org/~jnthn/libarchive/$file");
+        my $ua = HTTP::UserAgent.new;
+        my $response = $ua.get("http://www.p6c.org/~jnthn/libarchive/$file");
+        my $blob;
+        if $response.is-success {
+          $blob = $response.content;
+        } else {
+          die $response.status-line;
+        }
         say "Writing $file";
         spurt("$basedir\\$file", $blob);
 
