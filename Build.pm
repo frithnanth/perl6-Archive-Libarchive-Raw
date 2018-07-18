@@ -6,7 +6,7 @@ class Build {
     method build($workdir) {
         # We only have a .dll file bundled on Windows; non-windows is assumed
         # to have a libarchive already.
-        return unless $*DISTRO.is-win;
+        return 1 unless $*DISTRO.is-win;
 
         my constant $file = "libarchive.dll";
         my constant $hash = "E6836E32802555593AEDAFE1CC00752CBDA0EBCE051500B1AA37847C30EFF161";
