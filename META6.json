@@ -4,7 +4,6 @@
   "tags" : [ "archive", "libarchive", "compression", "nativecall" ],
   "version" : "0.0.6",
   "description" : "Raw interface to libarchive",
-  "build-depends" : [ "HTTP::UserAgent" ],
   "depends" : [ "NativeCall" ],
   "test-depends" : [ "Test" ],
   "provides" : {
