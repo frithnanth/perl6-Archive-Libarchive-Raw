@@ -6,7 +6,7 @@ os:
 language: perl6
 
 perl6:
-  - latest
+  - '2018.06'
 
 before_install:
   - sudo apt-get -qq update
