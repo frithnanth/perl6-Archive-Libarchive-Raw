@@ -1,5 +1,5 @@
 use v6;
-unit module Archive::Libarchive::Raw:ver<0.0.7>;
+unit module Archive::Libarchive::Raw:ver<0.0.8>;
 
 use NativeCall;
 
@@ -39,6 +39,7 @@ sub archive_read_support_filter_none(archive $archive --> int32) is native(LIB) 
 sub archive_read_support_filter_rpm(archive $archive --> int32) is native(LIB) is export { * }
 sub archive_read_support_filter_uu(archive $archive --> int32) is native(LIB) is export { * }
 sub archive_read_support_filter_xz(archive $archive --> int32) is native(LIB) is export { * }
+sub archive_read_support_filter_zstd(archive $archive --> int32) is native(LIB) is export { * }
 sub archive_read_support_filter_program(archive $archive, Str $command --> int32) is native(LIB) is export { * }
 sub archive_read_support_filter_program_signature(archive $archive, Str $cmd, Buf $match, size_t $length --> int32)
   is native(LIB) is export { * }
@@ -115,6 +116,7 @@ sub archive_write_add_filter_none(archive $archive --> int32) is native(LIB) is 
 sub archive_write_add_filter_program(archive $archive, Str $cmd --> int32) is native(LIB) is export { * }
 sub archive_write_add_filter_uuencode(archive $archive --> int32) is native(LIB) is export { * }
 sub archive_write_add_filter_xz(archive $archive --> int32) is native(LIB) is export { * }
+sub archive_write_add_filter_zstd(archive $archive --> int32) is native(LIB) is export { * }
 
 sub archive_write_set_format(archive $archive, int32 $format_code --> int32) is native(LIB) is export { * }
 sub archive_write_set_format_by_name(archive $archive, Str $name --> int32) is native(LIB) is export { * }
