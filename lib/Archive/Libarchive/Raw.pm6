@@ -1,5 +1,5 @@
 use v6;
-unit module Archive::Libarchive::Raw:ver<0.0.6>;
+unit module Archive::Libarchive::Raw:ver<0.0.7>;
 
 use NativeCall;
 
@@ -17,6 +17,7 @@ sub archive_zlib_version(--> Str) is native(LIB) is export { * }
 sub archive_liblzma_version(--> Str) is native(LIB) is export { * }
 sub archive_bzlib_version(--> Str) is native(LIB) is export { * }
 sub archive_liblz4_version(--> Str) is native(LIB) is export { * }
+sub archive_libzstd_version(--> Str) is native(LIB) is export { * }
 
 sub archive_read_new(--> archive) is native(LIB) is export { * }
 
