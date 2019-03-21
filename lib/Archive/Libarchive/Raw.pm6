@@ -30,6 +30,7 @@ sub archive_read_disk_set_symlink_logical(archive --> int32) is native(LIB) is e
 sub archive_error_string(archive $archive --> Str) is native(LIB) is export { * }
 sub archive_errno(archive $archive --> int32) is native(LIB) is export { * }
 sub archive_clear_error(archive $archive) is native(LIB) is export { * }
+sub archive_set_error(archive, int32, Str) is native(LIB) is export { * }
 
 sub archive_read_support_filter_all(archive $archive --> int32) is native(LIB) is export { * }
 sub archive_read_support_filter_bzip2(archive $archive --> int32) is native(LIB) is export { * }
