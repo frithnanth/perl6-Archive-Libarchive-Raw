@@ -179,7 +179,6 @@ sub archive_write_zip_set_compression_deflate(archive $archive --> int32) is nat
 sub archive_write_zip_set_compression_store(archive $archive --> int32) is native(LIB) is export { * }
 
 sub archive_entry_new(--> archive_entry) is native(LIB) is export { * }
-
 sub archive_entry_pathname(archive_entry $archive_entry --> Str) is native(LIB) is export { * }
 sub archive_entry_size(archive_entry $archive_entry --> int64) is native(LIB) is export { * }
 sub archive_entry_uid(archive_entry $archive_entry --> int64) is native(LIB) is export { * }
@@ -222,6 +221,7 @@ sub archive_entry_copy_link(archive_entry $archive_entry, Str) is native(LIB) is
 sub archive_entry_copy_link_w(archive_entry $archive_entry, Str) is native(LIB) is export { * }
 sub archive_entry_update_link_utf8(archive_entry $archive_entry, Str --> int32) is native(LIB) is export { * }
 sub archive_entry_set_mode(archive_entry $archive_entry, int32) is native(LIB) is export { * }
+sub archive_entry_mode(archive_entry --> int32) is native(LIB) is export { * }
 sub archive_entry_strmode(archive_entry $archive_entry --> Str) is native(LIB) is export { * }
 sub archive_entry_set_mtime(archive_entry $archive_entry, int64, int64) is native(LIB) is export { * }
 sub archive_entry_unset_mtime(archive_entry $archive_entry) is native(LIB) is export { * }
