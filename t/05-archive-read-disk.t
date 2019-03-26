@@ -1,0 +1,121 @@
+#!/usr/bin/env perl6
+
+use Test;
+use lib 'lib';
+use Archive::Libarchive::Raw;
+use Archive::Libarchive::Constants;
+use NativeCall;
+
+plan 57;
+
+isa-ok my $a = archive_read_disk_new(), archive, 'init archive_read_disk_new';
+is archive_read_disk_set_standard_lookup($a), ARCHIVE_OK, 'set standard lookup';
+isa-ok my $ae = archive_entry_new(), archive_entry, 'archive_entry';
+is archive_read_disk_set_symlink_physical($a), ARCHIVE_OK, 'symlink physical';
+is archive_read_disk_set_symlink_physical($a), ARCHIVE_OK, 'symlink logical';
+lives-ok { archive_entry_set_pathname($ae, $*PROGRAM.absolute) },
+    'archive_entry set pathname';
+is archive_read_disk_entry_from_file($a, $ae, -1, Pointer),
+    ARCHIVE_OK, 'read disk entry from file';
+ok archive_entry_uid($ae), 'uid';
+ok archive_entry_gid($ae), 'gid';
+ok archive_entry_uname($ae), 'uname';
+ok archive_entry_gname($ae), 'gname';
+ok archive_entry_mode($ae), 'mode';
+ok archive_entry_strmode($ae), 'mode';
+ok archive_entry_perm($ae), 'mode';
+lives-ok { archive_entry_sourcepath($ae) }, 'sourcepath';
+nok archive_entry_symlink($ae), 'not a symlink';
+lives-ok { archive_entry_atime($ae) }, 'atime';
+lives-ok { archive_entry_ctime($ae) }, 'atime';
+lives-ok { archive_entry_mtime($ae) }, 'atime';
+lives-ok { archive_entry_birthtime($ae) }, 'birthtime';
+is archive_entry_filetype($ae), AE_IFREG, 'filetype';
+lives-ok { archive_entry_fflags_text($ae) }, 'fflags';
+
+lives-ok { archive_set_error($a, -1, 'Test Error') }, 'set error';
+is archive_errno($a), -1, 'errno';
+is archive_error_string($a), 'Test Error', 'error string';
+is archive_read_free($a), ARCHIVE_OK, 'free';
+
+my $open;
+my $write;
+my $read;
+my $close;
+my $content = "Test content".encode;
+my $zipfile = Buf.new;
+
+sub archive-open(archive $archive, int64 $id --> int32)
+{
+    $open = $id;
+    ARCHIVE_OK
+}
+
+sub archive-write(archive $archive, int64 $id, CArray[uint8] $buf,
+                        size_t $bytes --> size_t)
+{
+    $write = $id;
+    $zipfile.append: $buf[^$bytes];
+    $bytes
+}
+
+my $sent;
+
+sub archive-read(archive $archive, int64 $id, CArray[Pointer] $buf --> size_t)
+{
+    return 0 if $sent;
+    $read = $id;
+    $buf[0] = nativecast(Pointer, $zipfile);
+    $sent = True;
+    $zipfile.bytes
+}
+
+sub archive-close(archive $archive, int64 $id --> int32)
+{
+    $close = $id;
+    ARCHIVE_OK
+}
+
+isa-ok my $ae2 = archive_entry_clone($ae), archive_entry, 'clone archive entry';
+lives-ok { archive_entry_set_size($ae2, $content.bytes) }, 'set size';
+is archive_entry_size($ae2), $content.bytes, 'size right';
+lives-ok { archive_entry_free($ae) }, 'free archive entry';
+
+isa-ok my $w = archive_write_new(), archive, 'new writer';
+is archive_write_set_options($w, ''), ARCHIVE_OK, 'write set options';
+is archive_write_set_bytes_per_block($w, 10240), ARCHIVE_OK, 'bytes per block';
+is archive_write_set_bytes_in_last_block($w, 1), ARCHIVE_OK, 'bytes last block';
+is archive_write_set_format_zip($w), ARCHIVE_OK, 'format';
+is archive_write_open($w, 42, &archive-open, &archive-write, &archive-close),
+    ARCHIVE_OK, 'write open';
+is archive_write_header($w, $ae2), ARCHIVE_OK, 'write header';
+is archive_write_data($w, $content, $content.bytes),
+    $content.bytes, 'write message';
+is archive_write_close($w), ARCHIVE_OK, 'close writer';
+is archive_write_free($w), ARCHIVE_OK, 'free writer';
+
+is $open, 42, 'open called';
+is $write, 42, 'write called';
+is $close, 42, 'close called';
+
+isa-ok my $r = archive_read_new(), archive, 'new reader';
+is archive_read_support_format_all($r), ARCHIVE_OK, 'format all';
+is archive_read_set_options($r, ''), ARCHIVE_OK, 'read set options';
+is archive_read_open($r, 97, &archive-open, &archive-read, &archive-close),
+    ARCHIVE_OK, 'read open';
+is archive_read_next_header2($r, $ae2), ARCHIVE_OK, 'read header';
+is archive_entry_size($ae2), $content.bytes, 'size right';
+my $reading = buf8.allocate($content.bytes);
+is archive_read_data($r, $reading, $reading.bytes), $reading.bytes, 'read data';
+is archive_read_close($r), ARCHIVE_OK, 'close reader';
+is archive_read_free($r), ARCHIVE_OK, 'free reader';
+
+lives-ok { archive_entry_free($ae2) }, 'free archive entry 2';
+
+is $open, 97, 'open called';
+is $read, 97, 'read called';
+is $close, 97, 'close called';
+
+is $content, $reading, 'got the same content back';
+
+done-testing;
