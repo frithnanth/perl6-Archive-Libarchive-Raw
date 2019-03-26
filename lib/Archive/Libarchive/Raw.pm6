@@ -75,6 +75,7 @@ sub archive_read_support_format_zip(archive $archive --> int32) is native(LIB) i
 sub archive_read_support_format_zip_streamable(archive $archive --> int32) is native(LIB) is export { * }
 sub archive_read_support_format_zip_seekable(archive $archive --> int32) is native(LIB) is export { * }
 sub archive_read_set_format(archive $archive, int32 $format --> int32) is native(LIB) is export { * }
+sub archive_read_set_options(archive, Str --> int32) is native(LIB) is export { * }
 sub archive_format_name(archive $archive --> Str) is native(LIB) is export { * }
 sub archive_format(archive $archive --> int32) is native(LIB) is export { * }
 sub archive_filter_name(archive $archive, int32 --> Str) is native(LIB) is export { * }
@@ -168,8 +169,8 @@ sub archive_write_set_format_warc(archive $archive --> int32) is native(LIB) is 
 sub archive_write_set_format_xar(archive $archive --> int32) is native(LIB) is export { * }
 sub archive_write_set_format_zip(archive $archive --> int32) is native(LIB) is export { * }
 sub archive_write_set_format_filter_by_ext(archive $archive, Str $filename --> int32) is native(LIB) is export { * }
-sub archive_write_set_format_filter_by_ext_def(archive $archive, Str $filename, Str $def_ext --> int32)
-  is native(LIB) is export { * }
+sub archive_write_set_format_filter_by_ext_def(archive $archive, Str $filename, Str $def_ext --> int32) is native(LIB) is export { * }
+sub archive_write_set_options(archive $archive, Str $options --> int32) is native(LIB) is export { * }
 
 sub archive_write_set_bytes_per_block(archive, int32 --> int32) is native(LIB) is export { * }
 sub archive_write_set_bytes_in_last_block(archive, int32 --> int32) is native(LIB) is export { * }
@@ -260,6 +261,7 @@ sub archive_entry_set_is_data_encrypted(archive_entry $archive_entry, int8 $is_e
 sub archive_entry_set_is_metadata_encrypted(archive_entry $archive_entry, int8 $is_encrypted) is native(LIB) is export { * }
 sub archive_entry_copy_mac_metadata(archive_entry $archive_entry, Pointer[void], size_t) is native(LIB) is export { * }
 sub archive_entry_free(archive_entry $archive_entry) is native(LIB) is export { * }
+sub archive_entry_clone(archive_entry --> archive_entry) is native(LIB) is export { * }
 
 =begin pod
 
