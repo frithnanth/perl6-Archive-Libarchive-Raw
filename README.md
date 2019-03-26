@@ -87,6 +87,7 @@ Fernando Santagata
 ## Contributions
 
 Many thanks to Jonathan Worthington for the Windows installer code.
+Many thanks to Curt Tilmes for implementing a bunch of calls to libarchive, and providing tests.
 
 ## Copyright and license
 
