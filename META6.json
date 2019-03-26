@@ -2,7 +2,7 @@
   "perl" : "6.c",
   "name" : "Archive::Libarchive::Raw",
   "tags" : [ "archive", "libarchive", "compression", "nativecall" ],
-  "version" : "0.0.8",
+  "version" : "0.0.9",
   "description" : "Raw interface to libarchive",
   "build-depends" : [ "HTTP::UserAgent" ],
   "depends" : [ "NativeCall" ],
