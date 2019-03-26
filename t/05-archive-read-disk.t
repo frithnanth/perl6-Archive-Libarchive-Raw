@@ -6,7 +6,7 @@ use Archive::Libarchive::Raw;
 use Archive::Libarchive::Constants;
 use NativeCall;
 
-plan 57;
+plan 56;
 
 isa-ok my $a = archive_read_disk_new(), archive, 'init archive_read_disk_new';
 is archive_read_disk_set_standard_lookup($a), ARCHIVE_OK, 'set standard lookup';
@@ -44,7 +44,6 @@ my $read;
 my $close;
 my $content = "Test content".encode;
 my $zipfile = Buf.new;
-say $content.bytes;
 
 sub archive-open(archive $archive, int64 $id --> int32)
 {
