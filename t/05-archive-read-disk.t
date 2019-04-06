@@ -42,6 +42,7 @@ my $read;
 my $close;
 my $content = "Test content".encode;
 my $zipfile = Buf.new;
+say $content.bytes;
 
 sub archive-open(archive $archive, int64 $id --> int32)
 {
