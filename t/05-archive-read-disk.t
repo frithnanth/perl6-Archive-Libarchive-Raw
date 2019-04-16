@@ -44,37 +44,36 @@ my $read;
 my $close;
 my $content = "Test content".encode;
 my $zipfile = Buf.new;
-say $content.bytes;
 
 sub archive-open(archive $archive, int64 $id --> int32)
 {
-    $open = $id;
-    ARCHIVE_OK
+  $open = $id;
+  ARCHIVE_OK
 }
 
 sub archive-write(archive $archive, int64 $id, CArray[uint8] $buf,
                         size_t $bytes --> size_t)
 {
-    $write = $id;
-    $zipfile.append: $buf[^$bytes];
-    $bytes
+  $write = $id;
+  $zipfile.append: $buf[^$bytes];
+  $bytes
 }
 
 my $sent;
 
 sub archive-read(archive $archive, int64 $id, CArray[Pointer] $buf --> size_t)
 {
-    return 0 if $sent;
-    $read = $id;
-    $buf[0] = nativecast(Pointer, $zipfile);
-    $sent = True;
-    $zipfile.bytes
+  return 0 if $sent;
+  $read = $id;
+  $buf[0] = nativecast(Pointer, $zipfile);
+  $sent = True;
+  $zipfile.bytes
 }
 
 sub archive-close(archive $archive, int64 $id --> int32)
 {
-    $close = $id;
-    ARCHIVE_OK
+  $close = $id;
+  ARCHIVE_OK
 }
 
 isa-ok my $ae2 = archive_entry_clone($ae), archive_entry, 'clone archive entry';
