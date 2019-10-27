@@ -10,12 +10,12 @@ if AUTHOR {
   is archive_version_number, 3004000, 'version number';
   is archive_version_string, 'libarchive 3.4.0', 'version string';
   is archive_version_details,
-    'libarchive 3.4.0 zlib/1.2.11 liblzma/5.2.4 bz2lib/1.0.8 liblz4/1.8.3 libzstd/1.4.3',
+    'libarchive 3.4.0 zlib/1.2.11 liblzma/5.2.4 bz2lib/1.0.8 liblz4/1.9.1 libzstd/1.4.3',
     'version details';
   is archive_zlib_version, '1.2.11', 'linked zlib version';
   is archive_liblzma_version, '5.2.4', 'linked liblzma version';
   is archive_bzlib_version, '1.0.8, 13-Jul-2019', 'linked bzlib version';
-  is archive_liblz4_version, '1.8.3', 'linked liblz4 version';
+  is archive_liblz4_version, '1.9.1', 'linked liblz4 version';
   is archive_libzstd_version, '1.4.3', 'linked libzstd version';
 }else{
   skip 'version number', 1;
