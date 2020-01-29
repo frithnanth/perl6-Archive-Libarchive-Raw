@@ -1,0 +1,4 @@
+package-install %(
+  alpine => qqw{make libarchive},
+  debian => qqw{libarchive13}
+);
