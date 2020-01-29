@@ -1,5 +1,5 @@
 package-install %(
   alpine => qqw{make libarchive openssl},
   debian => qqw{libarchive13},
-  centos => qqw{libarchive}
+  centos => qqw{libarchive openssl}
 );
