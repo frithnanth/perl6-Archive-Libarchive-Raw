@@ -1,4 +1,4 @@
 package-install %(
-  alpine => qqw{make libarchive},
+  alpine => qqw{make libarchive openssl},
   debian => qqw{libarchive13}
 );
