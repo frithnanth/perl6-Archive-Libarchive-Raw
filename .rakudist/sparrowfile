@@ -1,3 +1,9 @@
+if os() eq 'centos' {
+
+  task-run "tasks/disable-gpg-check";
+
+}
+
 package-install %(
   alpine => qqw{make libarchive libressl-dev},
   debian => qqw{libarchive13},
