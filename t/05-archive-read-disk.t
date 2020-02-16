@@ -17,8 +17,8 @@ lives-ok { archive_entry_set_pathname($ae, $*PROGRAM.absolute) },
     'archive_entry set pathname';
 is archive_read_disk_entry_from_file($a, $ae, -1, Pointer),
     ARCHIVE_OK, 'read disk entry from file';
-ok archive_entry_uid($ae), 'uid';
-ok archive_entry_gid($ae), 'gid';
+is archive_entry_uid($ae), +$*USER, 'uid';
+is archive_entry_gid($ae), +$*GROUP, 'gid';
 ok archive_entry_uname($ae), 'uname';
 ok archive_entry_gname($ae), 'gname';
 ok archive_entry_mode($ae), 'mode';
