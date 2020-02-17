@@ -13,10 +13,8 @@ is archive_read_disk_set_standard_lookup($a), ARCHIVE_OK, 'set standard lookup';
 isa-ok my $ae = archive_entry_new(), archive_entry, 'archive_entry';
 is archive_read_disk_set_symlink_physical($a), ARCHIVE_OK, 'symlink physical';
 is archive_read_disk_set_symlink_physical($a), ARCHIVE_OK, 'symlink logical';
-lives-ok { archive_entry_set_pathname($ae, $*PROGRAM.absolute) },
-    'archive_entry set pathname';
-is archive_read_disk_entry_from_file($a, $ae, -1, Pointer),
-    ARCHIVE_OK, 'read disk entry from file';
+lives-ok { archive_entry_set_pathname($ae, $*PROGRAM.absolute) }, 'archive_entry set pathname';
+is archive_read_disk_entry_from_file($a, $ae, -1, Pointer), ARCHIVE_OK, 'read disk entry from file';
 ok archive_entry_uid($ae), 'uid';
 ok archive_entry_gid($ae), 'gid';
 ok archive_entry_uname($ae), 'uname';
@@ -86,11 +84,9 @@ is archive_write_set_options($w, ''), ARCHIVE_OK, 'write set options';
 is archive_write_set_bytes_per_block($w, 10240), ARCHIVE_OK, 'bytes per block';
 is archive_write_set_bytes_in_last_block($w, 1), ARCHIVE_OK, 'bytes last block';
 is archive_write_set_format_zip($w), ARCHIVE_OK, 'format';
-is archive_write_open($w, 42, &archive-open, &archive-write, &archive-close),
-    ARCHIVE_OK, 'write open';
+is archive_write_open($w, 42, &archive-open, &archive-write, &archive-close), ARCHIVE_OK, 'write open';
 is archive_write_header($w, $ae2), ARCHIVE_OK, 'write header';
-is archive_write_data($w, $content, $content.bytes),
-    $content.bytes, 'write message';
+is archive_write_data($w, $content, $content.bytes), $content.bytes, 'write message';
 is archive_write_close($w), ARCHIVE_OK, 'close writer';
 is archive_write_free($w), ARCHIVE_OK, 'free writer';
 
@@ -101,10 +97,8 @@ is $close, 42, 'close called';
 isa-ok my $r = archive_read_new(), archive, 'new reader';
 is archive_read_support_format_all($r), ARCHIVE_OK, 'format all';
 is archive_read_set_options($r, ''), ARCHIVE_OK, 'read set options';
-is archive_read_open($r, 97, &archive-open, &archive-read, &archive-close),
-    ARCHIVE_OK, 'read open';
+is archive_read_open($r, 97, &archive-open, &archive-read, &archive-close), ARCHIVE_OK, 'read open';
 is archive_read_next_header2($r, $ae2), ARCHIVE_OK, 'read header';
-#is archive_entry_size($ae2), $content.bytes, 'size right';
 my $reading = buf8.allocate($content.bytes);
 is archive_read_data($r, $reading, $reading.bytes), $reading.bytes, 'read data';
 is archive_read_close($r), ARCHIVE_OK, 'close reader';

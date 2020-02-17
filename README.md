@@ -69,13 +69,13 @@ $ zef install Archive::Libarchive::Raw
 To run the tests:
 
 ```
-$ prove -e "perl6 -Ilib"
+$ prove -e "raku -Ilib"
 ```
 
 ## Note
 
 This module relies on a C library which might not be present in one's installation, so it's not a substitute
-for a pure Perl6 module.
+for a pure Raku module.
 
 This is a raw interface to the functions provided by the C library; any program that uses this module might
 need to use NativeCall. If you wish to use a higher level interface, please take a look at Archive::Libarchive.

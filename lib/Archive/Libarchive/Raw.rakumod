@@ -1,5 +1,6 @@
 use v6;
-unit module Archive::Libarchive::Raw:ver<0.0.9>;
+
+unit module Archive::Libarchive::Raw:ver<0.1.0>;
 
 use NativeCall;
 
@@ -328,7 +329,7 @@ $ zef install Archive::Libarchive::Raw
 To run the tests:
 
 =begin code
-$ prove -e "perl6 -Ilib"
+$ prove -e "raku -Ilib"
 =end code
 
 =head1 Author

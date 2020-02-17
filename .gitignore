@@ -1,0 +1,10 @@
+/blib/
+/src/*.o
+/src/Makefile
+/resources/*.so
+/resources/*.dylib
+.precomp/
+!t
+!t/testdata.tar.gz
+Session.vim
+*.swp

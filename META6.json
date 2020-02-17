@@ -2,14 +2,14 @@
   "perl" : "6.c",
   "name" : "Archive::Libarchive::Raw",
   "tags" : [ "archive", "libarchive", "compression", "nativecall" ],
-  "version" : "0.0.9",
+  "version" : "0.1.0",
   "description" : "Raw interface to libarchive",
   "build-depends" : [ "HTTP::UserAgent" ],
   "depends" : [ "NativeCall" ],
   "test-depends" : [ "Test" ],
   "provides" : {
-    "Archive::Libarchive::Raw" : "lib/Archive/Libarchive/Raw.pm6",
-    "Archive::Libarchive::Constants" : "lib/Archive/Libarchive/Constants.pm6"
+    "Archive::Libarchive::Raw" : "lib/Archive/Libarchive/Raw.rakumod",
+    "Archive::Libarchive::Constants" : "lib/Archive/Libarchive/Constants.rakumod"
   },
   "resources" : [ "libarchive.dll" ],
   "authors" : [ "Fernando Santagata" ],
