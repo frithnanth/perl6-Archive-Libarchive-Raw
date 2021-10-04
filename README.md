@@ -4,9 +4,7 @@ Archive::Libarchive::Raw - Raw interface to libarchive using NativeCall.
 
 ## Build Status
 
-| Operating System  |   Build Status  | CI Provider |
-| ----------------- | --------------- | ----------- |
-| Linux             | [![Build Status](https://travis-ci.org/frithnanth/perl6-Archive-Libarchive-Raw.svg?branch=master)](https://travis-ci.org/frithnanth/perl6-Archive-Libarchive-Raw)  | Travis CI |
+[![Actions Status](https://github.com/frithnanth/perl6-Archive-Libarchive-Raw/workflows/test/badge.svg)](https://github.com/frithnanth/perl6-Archive-Libarchive-Raw/actions)
 
 ## Example
 
