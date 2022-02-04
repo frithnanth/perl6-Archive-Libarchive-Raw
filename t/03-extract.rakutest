@@ -28,7 +28,7 @@ if $res != ARCHIVE_EOF {
 is archive_write_header($ext, $entry), ARCHIVE_OK, 'write entry header';
 ok archive_entry_size($entry) > 0, 'entry size > 0';
 my Pointer[void] $buff .= new;
-my int64 $size;
+my size_t $size;
 my int64 $offset;
 is archive_read_data_block($a, $buff, $size, $offset), ARCHIVE_OK, 'read data block';
 is archive_write_data_block($ext, $buff, $size, $offset), ARCHIVE_OK, 'write data block';
