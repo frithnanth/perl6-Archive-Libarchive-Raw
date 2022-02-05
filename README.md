@@ -8,7 +8,7 @@ Archive::Libarchive::Raw - Raw interface to libarchive using NativeCall.
 
 ## Example
 
-```Perl6
+```raku
 use v6;
 
 use Archive::Libarchive::Raw;
