@@ -1,6 +1,6 @@
 use v6;
 
-unit module Archive::Libarchive::Raw:ver<0.1.2>;
+unit module Archive::Libarchive::Raw:ver<0.1.2>:auth<zef:FRITH>;
 
 use NativeCall;
 
@@ -271,9 +271,7 @@ sub archive_entry_clone(archive_entry --> archive_entry) is native(LIB) is expor
 Archive::Libarchive::Raw - A simple interface to libarchive
 
 =head1 SYNOPSIS
-=begin code
-
-use v6;
+=begin code :lang<raku>
 
 use Archive::Libarchive::Raw;
 use Archive::Libarchive::Constants;
@@ -294,6 +292,8 @@ sub MAIN(:$file! where { .IO.f // die "file '$file' not found" })
 }
 
 =end code
+
+For more examples see the I<example> directory.
 
 =head1 DESCRIPTION
 
@@ -324,13 +324,13 @@ sudo apt-get install libarchive13
 $ zef install Archive::Libarchive::Raw
 =end code
 
-=head1 Testing
+=head1 Note
 
-To run the tests:
+This module relies on a C library which might not be present in one's installation, so it's not a substitute
+for a pure Raku module.
 
-=begin code
-$ prove -e "raku -Ilib"
-=end code
+This is a raw interface to the functions provided by the C library; any program that uses this module might
+need to use NativeCall. If you wish to use a higher level interface, please take a look at Archive::Libarchive.
 
 =head1 Author
 
@@ -339,6 +339,7 @@ Fernando Santagata
 =head1 Contributions
 
 Many thanks to Jonathan Worthington for the Windows installer code.
+
 Many thanks to Curt Tilmes for implementing a bunch of calls to libarchive, and providing tests.
 
 =head1 License

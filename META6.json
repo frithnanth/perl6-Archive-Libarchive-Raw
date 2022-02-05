@@ -1,18 +1,32 @@
 {
-  "perl" : "6.c",
-  "name" : "Archive::Libarchive::Raw",
-  "tags" : [ "archive", "libarchive", "compression", "nativecall" ],
-  "version" : "0.1.2",
-  "description" : "Raw interface to libarchive",
-  "build-depends" : [ "HTTP::UserAgent" ],
-  "depends" : [ "NativeCall" ],
-  "test-depends" : [ "Test" ],
-  "provides" : {
-    "Archive::Libarchive::Raw" : "lib/Archive/Libarchive/Raw.rakumod",
-    "Archive::Libarchive::Constants" : "lib/Archive/Libarchive/Constants.rakumod"
-  },
-  "resources" : [ "libarchive.dll" ],
-  "authors" : [ "Fernando Santagata" ],
+  "auth": "zef:FRITH",
+  "authors": [
+    "Fernando Santagata"
+  ],
+  "build-depends": [
+    "HTTP::UserAgent"
+  ],
+  "depends": [
+  ],
+  "description": "A simple interface to libarchive",
   "license": "Artistic-2.0",
-  "source-url" : "git://github.com/frithnanth/perl6-Archive-Libarchive-Raw.git"
+  "name": "Archive::Libarchive::Raw",
+  "perl": "6.c",
+  "provides": {
+    "Archive::Libarchive::Constants": "lib/Archive/Libarchive/Constants.rakumod",
+    "Archive::Libarchive::Raw": "lib/Archive/Libarchive/Raw.rakumod"
+  },
+  "resources": [
+    "libarchive.dll"
+  ],
+  "source-url": "git://github.com/frithnanth/perl6-Archive-Libarchive-Raw.git",
+  "tags": [
+    "archive",
+    "libarchive",
+    "compression",
+    "nativecall"
+  ],
+  "test-depends": [
+  ],
+  "version": "0.1.2"
 }
