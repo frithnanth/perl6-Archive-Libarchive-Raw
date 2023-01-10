@@ -7,16 +7,16 @@ use Archive::Libarchive::Raw;
 constant AUTHOR = ?%*ENV<TEST_AUTHOR>;
 
 if AUTHOR {
-  is archive_version_number, 3005002, 'version number';
-  is archive_version_string, 'libarchive 3.5.2', 'version string';
+  is archive_version_number, 3006002, 'version number';
+  is archive_version_string, 'libarchive 3.6.2', 'version string';
   is archive_version_details,
-    'libarchive 3.5.2 zlib/1.2.11 liblzma/5.2.5 bz2lib/1.0.8 liblz4/1.9.3 libzstd/1.4.8',
+    'libarchive 3.6.2 zlib/1.2.13 liblzma/5.4.0 bz2lib/1.0.8 liblz4/1.9.4 libzstd/1.5.2',
     'version details';
-  is archive_zlib_version, '1.2.11', 'linked zlib version';
-  is archive_liblzma_version, '5.2.5', 'linked liblzma version';
+  is archive_zlib_version, '1.2.13', 'linked zlib version';
+  is archive_liblzma_version, '5.4.0', 'linked liblzma version';
   is archive_bzlib_version, '1.0.8, 13-Jul-2019', 'linked bzlib version';
-  is archive_liblz4_version, '1.9.3', 'linked liblz4 version';
-  is archive_libzstd_version, '1.4.8', 'linked libzstd version';
+  is archive_liblz4_version, '1.9.4', 'linked liblz4 version';
+  is archive_libzstd_version, '1.5.2', 'linked libzstd version';
 }else{
   skip 'version number', 1;
   skip 'version string', 1;
