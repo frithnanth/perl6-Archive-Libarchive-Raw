@@ -1,6 +1,6 @@
 use v6;
 
-unit module Archive::Libarchive::Raw:ver<0.1.2>:auth<zef:FRITH>;
+unit module Archive::Libarchive::Raw:ver<0.1.3>:auth<zef:FRITH>;
 
 use NativeCall;
 
