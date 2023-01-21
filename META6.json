@@ -4,7 +4,6 @@
     "Fernando Santagata"
   ],
   "build-depends": [
-    "HTTP::UserAgent"
   ],
   "depends": [
   ],
