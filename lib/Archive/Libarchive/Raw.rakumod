@@ -4,9 +4,7 @@ unit module Archive::Libarchive::Raw:ver<0.1.2>:auth<zef:FRITH>;
 
 use NativeCall;
 
-constant LIB = $*DISTRO.is-win
-                ?? %?RESOURCES<libarchive.dll>.absolute
-                !! ('archive', v13);
+constant LIB = ('archive', v13);
 
 class archive       is repr('CPointer') is export { * } # libarchive private struct
 class archive_entry is repr('CPointer') is export { * } # libarchive private struct
