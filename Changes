@@ -2,6 +2,7 @@
 Revision history for Archive-Libarchive-Raw
 
 {{$NEXT}}
+    - The Windows version of libarchive won't be installed automatically anymore
 
 0.1.2  2022-02-05T15:28:45+01:00
     - Switch to zef ecosystem

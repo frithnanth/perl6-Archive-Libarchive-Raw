@@ -55,6 +55,11 @@ Debian Linux
 
     sudo apt-get install libarchive13
 
+Windows
+-------
+
+The compiled version of the library can be downloaded here: [https://www.libarchive.org/downloads/](https://www.libarchive.org/downloads/)
+
 Installation
 ============
 
@@ -74,8 +79,6 @@ Fernando Santagata
 
 Contributions
 =============
-
-Many thanks to Jonathan Worthington for the Windows installer code.
 
 Many thanks to Curt Tilmes for implementing a bunch of calls to libarchive, and providing tests.
 

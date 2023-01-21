@@ -17,7 +17,6 @@
     "Archive::Libarchive::Raw": "lib/Archive/Libarchive/Raw.rakumod"
   },
   "resources": [
-    "libarchive.dll"
   ],
   "source-url": "git://github.com/frithnanth/perl6-Archive-Libarchive-Raw.git",
   "tags": [

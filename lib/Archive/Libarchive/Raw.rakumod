@@ -318,6 +318,10 @@ instructions below based on your platform:
 sudo apt-get install libarchive13
 =end code
 
+=head2 Windows
+
+The compiled version of the library can be downloaded here: L<https://www.libarchive.org/downloads/>
+
 =head1 Installation
 
 =begin code
@@ -337,8 +341,6 @@ need to use NativeCall. If you wish to use a higher level interface, please take
 Fernando Santagata
 
 =head1 Contributions
-
-Many thanks to Jonathan Worthington for the Windows installer code.
 
 Many thanks to Curt Tilmes for implementing a bunch of calls to libarchive, and providing tests.
 
