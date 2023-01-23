@@ -9,7 +9,11 @@ use NativeCall;
 plan 56;
 
 isa-ok my $a = archive_read_disk_new(), archive, 'init archive_read_disk_new';
-is archive_read_disk_set_standard_lookup($a), ARCHIVE_OK, 'set standard lookup';
+if $*DISTRO.is-win {
+  skip 'set standard lookup', 1;
+} else {
+  is archive_read_disk_set_standard_lookup($a), ARCHIVE_OK, 'set standard lookup';
+}
 isa-ok my $ae = archive_entry_new(), archive_entry, 'archive_entry';
 is archive_read_disk_set_symlink_physical($a), ARCHIVE_OK, 'symlink physical';
 is archive_read_disk_set_symlink_physical($a), ARCHIVE_OK, 'symlink logical';
@@ -17,8 +21,13 @@ lives-ok { archive_entry_set_pathname($ae, $*PROGRAM.absolute) }, 'archive_entry
 is archive_read_disk_entry_from_file($a, $ae, -1, Pointer), ARCHIVE_OK, 'read disk entry from file';
 is archive_entry_uid($ae), +$*USER, 'uid';
 is archive_entry_gid($ae), +$*GROUP, 'gid';
-ok archive_entry_uname($ae), 'uname';
-ok archive_entry_gname($ae), 'gname';
+if $*DISTRO.is-win {
+  skip 'uname', 1;
+  skip 'gname', 1;
+} else {
+  ok archive_entry_uname($ae), 'uname';
+  ok archive_entry_gname($ae), 'gname';
+}
 ok archive_entry_mode($ae), 'mode';
 ok archive_entry_strmode($ae), 'mode';
 ok archive_entry_perm($ae), 'mode';
