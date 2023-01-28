@@ -1,4 +1,4 @@
-#!/usr/bin/env perl6
+#!/usr/bin/env raku
 
 use Test;
 use lib 'lib';
@@ -18,7 +18,7 @@ if $*DISTRO.is-win {
 }
 # nonexistent file
 is archive_read_open_filename($a, $path ~ 'nofile', 10240), ARCHIVE_FATAL, 'read from nonexistent file';
-is archive_error_string($a), "Failed to open 't/nofile'", 'error string';
+is archive_error_string($a), ($*DISTRO.is-win ?? q{Failed to open 't\nofile'} !! "Failed to open 't/nofile'"), 'error string';
 # ARCHIVE_FATAL makes the archive handler unusable
 $a = archive_read_new();
 archive_read_support_filter_all($a);
