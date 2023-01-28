@@ -1,6 +1,6 @@
 use v6;
 
-unit module Archive::Libarchive::Constants:ver<0.1.4>:auth<zef:FRITH>;
+unit module Archive::Libarchive::Constants:ver<0.1.5>:auth<zef:FRITH>;
 
 constant ARCHIVE_OK                                       is export = 0;
 constant ARCHIVE_EOF                                      is export = 1;
