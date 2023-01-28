@@ -1,6 +1,7 @@
 Revision history for Archive-Libarchive-Raw
 
 {{$NEXT}}
+    - Adjust one more test to run on Windows
 
 0.1.4  2023-01-23T09:59:49Z
     - Adjust tests to run on Windows
